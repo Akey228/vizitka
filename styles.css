@@ -1,0 +1,487 @@
+/* Общее оформление */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a:active,
+/* активная/посещенная ссылка */
+a:hover,
+/* при наведении */
+a {
+    color: #f1f1f1;
+    text-decoration: none;
+
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    background-color: #0d1b2a;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Фоновые эффекты */
+.stars,
+.twinkling,
+.clouds {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.stars {
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    background-size: cover;
+}
+
+.twinkling {
+    background: url('https://www.transparenttextures.com/patterns/twinkle.png');
+    background-size: cover;
+    animation: move-twinkling 20s linear infinite;
+    opacity: 0.5;
+}
+
+.clouds {
+    background: url('https://www.transparenttextures.com/patterns/clouds.png');
+    background-size: cover;
+    animation: move-clouds 100s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes move-twinkling {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-1000px);
+    }
+}
+
+@keyframes move-clouds {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-1000px);
+    }
+}
+
+/* Шапка */
+.header {
+    background: rgba(13, 27, 42, 0.9);
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    color: #28a745;
+    /* Зелёный цвет */
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav ul li a:hover {
+    color: #28a745;
+    /* Зелёный цвет при наведении */
+}
+
+/* Переключатель темы */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-label {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    cursor: pointer;
+}
+
+.toggle-label input {
+    display: none;
+}
+
+.toggle-label .toggle-ball {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 26px;
+    height: 26px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.toggle-label .fa-moon,
+.toggle-label .fa-sun {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #0d1b2a;
+}
+
+.toggle-label .fa-moon {
+    left: 10px;
+}
+
+.toggle-label .fa-sun {
+    right: 10px;
+}
+
+#toggle-checkbox:checked+.toggle-label .toggle-ball {
+    transform: translateX(26px);
+}
+
+body.dark-mode {
+    background-color: #0d1b2a;
+    color: #ffffff;
+}
+
+body.light-mode {
+    background-color: #f0f8ff;
+    color: #0d1b2a;
+}
+
+body.light-mode .header {
+    background: rgba(240, 248, 255, 0.9);
+    color: #0d1b2a;
+}
+
+body.light-mode .logo a {
+    color: #28a745;
+    /* Зелёный цвет */
+}
+
+body.light-mode .nav ul li a {
+    color: #0d1b2a;
+}
+
+body.light-mode .nav ul li a:hover {
+    color: #28a745;
+    /* Зелёный цвет при наведении */
+}
+
+body.light-mode .work-card {
+    background-color: #ffffff;
+    color: #0d1b2a;
+    border: 1px solid #d1d5da;
+}
+
+body.light-mode .work-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode .footer {
+    background-color: #24292e;
+    color: #ffffff;
+}
+
+/* Обо мне */
+.about {
+    padding: 120px 0 60px 0;
+    background: rgba(13, 27, 42, 0.8);
+}
+
+.about .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #28a745;
+    /* Зелёный цвет */
+    text-align: left;
+    /* Выровнять по левому краю */
+}
+
+.about-content {
+    display: flex;
+    gap: 40px;
+    max-width: 1000px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.about-image img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 5px solid #28a745;
+    /* Зелёная рамка */
+    object-fit: cover;
+}
+
+.about-text {
+    max-width: 600px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #cbd5e0;
+    text-align: left;
+    /* Выровнять по левому краю */
+}
+
+body.light-mode .about {
+    background: rgba(240, 248, 255, 0.9);
+}
+
+body.light-mode .about-text {
+    color: #0d1b2a;
+}
+
+/* Мои работы */
+.works {
+    padding: 60px 0;
+    background: rgba(13, 27, 42, 0.9);
+}
+
+.works .container {
+    position: relative;
+}
+
+.works h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    /* Выровнять по левому краю */
+    color: #28a745;
+    /* Зелёный цвет */
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel__track-container {
+    overflow: hidden;
+}
+
+.carousel__track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel__slide {
+    min-width: 30%;
+    margin: 0 1.5%;
+}
+
+.work-card {
+    background-color: rgba(13, 27, 42, 0.8);
+    border: 1px solid #1f2937;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(40, 167, 69, 0.3);
+    /* Зелёная тень */
+}
+
+.work-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.work-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #28a745;
+    /* Зелёный цвет */
+    text-align: left;
+    /* Выровнять по левому краю */
+}
+
+.work-info p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #cbd5e0;
+    text-align: left;
+    /* Выровнять по левому краю */
+}
+
+.work-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    /* Зелёный цвет */
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.work-link:hover {
+    background-color: #1e7e34;
+    /* Тёмно-зелёный при наведении */
+}
+
+/* Кнопки карусели */
+.carousel__button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(40, 167, 69, 0.8);
+    /* Зелёный цвет */
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 1.5rem;
+    transition: background 0.3s ease;
+}
+
+.carousel__button:hover {
+    background: rgba(40, 167, 69, 1);
+    /* Тёмно-зелёный при наведении */
+}
+
+.carousel__button--left {
+    left: 10px;
+}
+
+.carousel__button--right {
+    right: 10px;
+}
+
+/* Подвал */
+.footer {
+    background: rgba(13, 27, 42, 0.9);
+    padding: 30px 0;
+    text-align: center;
+}
+
+.footer p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #cbd5e0;
+}
+
+.footer .social-links a {
+    color: #28a745;
+    /* Зелёный цвет */
+    margin: 0 10px;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer .social-links a:hover {
+    color: #1e7e34;
+}
+
+
+.project-project {
+    transition: transform 0.3s ease-in-out;
+    margin-top: 150px;
+    /* add transition effect */
+}
+
+.project-project:hover {
+    transform: scale(1.05);
+    /* scale up on hover */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    /* add a subtle shadow */
+    border-radius: 20px;
+    /* maintain the border radius */
+    background-color: #f7f7f7;
+    /* add a light background color on hover */
+    cursor: pointer;
+    /* change the cursor to a pointer on hover */
+    /* add a border on hover */
+    background-image: linear-gradient(to bottom, #f7f7f7, #e7e7e7);
+    /* add a gradient background on hover */
+}
+
+.project-about {
+    /* show the project description text from the start */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-project:hover .project-about {
+    /* add some hover effects to the text */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* add a subtle text shadow */
+    color: #333;
+    /* change the text color on hover */
+}
+
+
+.project-project {
+    background: transparent;
+    width: 300px;
+    height: 400px;
+    cursor: pointer;
+}
+
+.project-project:hover {
+    background: rgba(255, 255, 255, 0.0);
+
+}
+
+.project-about span {
+    font-size: 24px;
+    max-width: 300px;
+    padding: 5px 0px;
+    font-weight: 600;
+    color: #f1f1f1;
+}
+
+.project-about p {
+    color: #8b8b8b;
+    max-width: 300px;
+}
+
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-between;
+}
